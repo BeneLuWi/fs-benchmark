@@ -1,7 +1,7 @@
 # FS Benchmark
 ## TODOS
 * In run.sh entfernen aller Dateien im Zielordner vor dem Ausführen des filebench befehls
-* Repository aufräumen > mehrere Instanzen von createscripts.sh
+* Repository aufräumen > mehrere Instanzen von createscripts.sh (done)
 * Mehrere Durchläufe in run pro Szenario
 * Copyfiles testen
 * Einmal durchlaufen lassen
