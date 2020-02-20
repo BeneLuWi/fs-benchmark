@@ -8,6 +8,7 @@ do
 	echo "Processing $f"
 	RESULTFILE=$(pwd)/results/btrfs/$(basename $f).txt
 
+	rm -r $(pwd)/mount/btrfs/*
 
 	filebench -f $f | grep -n 'IO Summary'  >> $RESULTFILE
 
@@ -23,6 +24,7 @@ do
 	echo "Processing $f"
 	RESULTFILE=$(pwd)/results/ext4/$(basename $f).txt
 
+	rm -r $(pwd)/mount/ext4/*
 	
 	filebench -f $f | grep -n 'IO Summary'  >> $RESULTFILE
 		
