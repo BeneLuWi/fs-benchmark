@@ -12,24 +12,19 @@ do
 	do
 		if [ "$(basename $f)" == "copyfiles.f" ]
 			then
-				$i = ($i / 10)
-				echo "Devided i has value $i"
+				i=$((i / 10))
 			fi
 			
 		cp $f $BTRFSSCRIPTS
 		NEWFILE=$BTRFSSCRIPTS/$(basename $f)-$i
 		mv $BTRFSSCRIPTS/$(basename $f) $NEWFILE
 		sed -i "s?dir=\/tmp?dir=$(pwd)\/mount\/btrfs?" $NEWFILE
-		if grep -Fxq "nfiles=" $NEWFILE
+		if grep -q nfiles= "$NEWFILE";
 			then
-				echo "found"
-			# code if found
 				sed -i "s/nfiles=.*/nfiles=$i/" $NEWFILE
-			else
-				echo "not found"
-			# code if not found
-				$i = ($i / 10000)
-				echo "Devided i has value $i"
+			else				
+				i=$((i / 10000))
+				echo "nfiles not found in file $NEWFILE i has value $i"
 				sed -i "s/filesize=.*/filesize="$i"g/" $NEWFILE
 				mv $NEWFILE "$BTRFSSCRIPTS/$(basename $f)-$i"
 		fi
@@ -45,20 +40,20 @@ do
 	do
 		if [ "$(basename $f)" == "copyfiles.f" ]
 			then
-				$i = ($i / 10)		
+				i=$((i / 10))	
 			fi
 			
 		cp $f $EXT4SCRIPTS
 		NEWFILE=$EXT4SCRIPTS/$(basename $f)-$i
 		mv $EXT4SCRIPTS/$(basename $f) $NEWFILE
 		sed -i "s?dir=\/tmp?dir=$(pwd)\/mount\/ext4?" $NEWFILE
-		if grep -Fxq "nfiles=" $NEWFILE
+		if grep -q nfiles= "$NEWFILE";
 			then
-			# code if found
 				sed -i "s/nfiles=.*/nfiles=$i/" $NEWFILE
 			else
-			# code if not found
-				$i = ($i / 10000)
+				i=$((i / 10000))
+				echo "nfiles not found in file $NEWFILE i has value $i"
+				
 				sed -i "s/filesize=.*/filesize="$i"g/" $NEWFILE
 				mv $NEWFILE "$BTRFSSCRIPTS/$(basename $f)-$i"
 		fi
