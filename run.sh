@@ -6,7 +6,14 @@ if [ -z "$1" ]
 		exit
 	fi
 
-echo "Bechmarking a $1"
+
+if [ -z "$2" ]
+	then
+		echo "please specify number of replications type as arg 2"
+		exit
+	fi
+
+echo "Bechmarking a $1 with $2 replications"
 
 
 BTRFSSCRIPTS=$(pwd)/scripts/btrfs/*
@@ -16,7 +23,7 @@ EXT4SCRIPTS=$(pwd)/scripts/ext4/*
 RESULTFILE=$(pwd)/results/result$(date +"%d_%m_%H_%M").csv
 
 echo "Processing btrfs scripts"
-for i in {1..5}
+for i in {1..$2}
 do
 	for f in $BTRFSSCRIPTS
 	do 
@@ -35,7 +42,7 @@ done
 rm -r $(pwd)/mount/btrfs/*
 
 echo "Processing ext4 scripts"
-for i in {1..5}
+for i in {1..$2}
 do
 
 	for f in $EXT4SCRIPTS
