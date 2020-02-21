@@ -36,6 +36,7 @@ do
 		sed -i -E "s/(ops|ops\/s|rd\/wr|mb\/s|ms\/op)//g" $RESULTFILE
 		sed -i -E "s/(.*IO Summary: )/$1,ext4,$(basename $f),/g" $RESULTFILE
 		sed -i -E 's/ +/,/g' $RESULTFILE
+		sed -i -E 's/,,/,/g' $RESULTFILE
 
 	done
 done
@@ -54,6 +55,7 @@ do
 		sed -i -E "s/(ops|ops\/s|rd\/wr|mb\/s|ms\/op)//g" $RESULTFILE
 		sed -i -E "s/(.*IO Summary: )/$1,btrfs,$(basename $f),/g" $RESULTFILE
 		sed -i -E 's/ +/,/g' $RESULTFILE
+		sed -i -E 's/,,/,/g' $RESULTFILE
 
 	done
 done
