@@ -1,4 +1,14 @@
 #!/bin/bash
+
+if [ -z "$1" ]
+	then
+		echo "please specify disk type as arg 1"
+		exit
+	fi
+
+echo "Bechmarking a $1"
+
+
 BTRFSSCRIPTS=$(pwd)/scripts/btrfs/*
 EXT4SCRIPTS=$(pwd)/scripts/ext4/*
 
@@ -17,7 +27,7 @@ do
 
 		
 		sed -i -E "s/(ops|ops\/s|rd\/wr|mb\/s|ms\/op)//g" $RESULTFILE
-		sed -i -E "s/(.*IO Summary: )/ext4,$(basename $f),/g" $RESULTFILE
+		sed -i -E "s/(.*IO Summary: )/$1,ext4,$(basename $f),/g" $RESULTFILE
 		sed -i -E 's/ +/,/g' $RESULTFILE
 
 	done
@@ -35,7 +45,7 @@ do
 		filebench -f $f | grep -n 'IO Summary'  >> $RESULTFILE
 			
 		sed -i -E "s/(ops|ops\/s|rd\/wr|mb\/s|ms\/op)//g" $RESULTFILE
-		sed -i -E "s/(.*IO Summary: )/btrfs,$(basename $f),/g" $RESULTFILE
+		sed -i -E "s/(.*IO Summary: )/$1,btrfs,$(basename $f),/g" $RESULTFILE
 		sed -i -E 's/ +/,/g' $RESULTFILE
 
 	done
