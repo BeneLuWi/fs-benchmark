@@ -8,14 +8,14 @@ Nach dem Test: ``sudo sysctl -a --pattern kernel.randomize_va_space=2``, um ASLR
 - [x] Copyfiles testen
 - [x] Einmal durchlaufen lassen
 - [x] Gesamtlaufzeit abschätzen (auch pro Szenario)
-- [ ] Basescripts Konfigurieren
+- [x] Basescripts Konfigurieren
 - [x] In run.sh entfernen aller Dateien im Zielordner vor dem Ausführen des filebench befehls
 - [x] Repository aufräumen > mehrere Instanzen von createscripts.sh
 
 
 
-Bencharks
-- [ ] R Script zum Aggregieren der Szenarien
+## Bencharks
+- [ ] Anpassen der Scripts fuer randomRW auf 5 / 10 und 15g
 - [ ] Hardware HDD vs SSD
 - [ ] Virtualisiert?
 - [ ] Ram?
