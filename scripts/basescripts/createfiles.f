@@ -26,8 +26,8 @@
 set $dir=/tmp
 set $nfiles=50000
 set $meandirwidth=100
-set $meanfilesize=16k
-set $iosize=1m
+set $meanfilesize=1m
+set $iosize=10m
 set $nthreads=16
 
 set mode quit firstdone
