@@ -1,4 +1,7 @@
 # FS Benchmark
+Vorm Laufen der Tests: ``sudo sysctl kernel.randomize_va_space=0``  
+Nach dem Test: ``sudo sysctl -a --pattern kernel.randomize_va_space=2``, um ASLR wieder zu aktivieren.
+
 ## TODOS
 
 * Mehrere Durchläufe in run pro Szenario
