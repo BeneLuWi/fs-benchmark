@@ -39,7 +39,7 @@ do
 			sed -i -E "s/(.*IO Summary: )/$1,$filesystem,$(basename $f),/g" $RESULTFILE
 			sed -i -E 's/ +/,/g' $RESULTFILE
 			sed -i -E 's/,,/,/g' $RESULTFILE
-			#rm -r $(pwd)/mount/$filesystem/*
+			rm -r $(pwd)/mount/$filesystem/*
 
 		done
 	done
