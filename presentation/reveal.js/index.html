@@ -6,6 +6,7 @@
 
 		<title>reveal.js</title>
 
+		<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -26,10 +27,92 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<section>Sub 1</section>
-					<section>Sub 2</section>
-					<section>Sub 3</section>
+					<h2>ext4 VS btrfs</h2>
 				</section>
+
+				<section>
+					<div class="col-container">
+						<div class="col">
+							<h4>ext4</h4>
+							<ul>
+								<li>Journaling FS</li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
+						<div class="col">
+							<h4>btrfs</h4>
+							<ul>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<section>
+
+					</section>
+				</section>
+				<section>
+					<section>
+						<h4>Btrfs-allgemein</h4>
+					</section>
+					<section><h4>btrfs b-Baum</h4></section>
+					<section><h4>Copy-On-Write (COW)</h4></section>
+				</section>
+
+				<section>
+					<section>
+						<h4>Benchmarking - Vorgehensweise</h4>
+						<ul>
+							<li class="fragment">Filebench</li>
+							<li class="fragment">Simulation verschiedener Workloads</li>
+							<ul>
+								<li class="fragment">Random Read Write (in großer Datei)</li>
+								<li class="fragment">Copy/Create File</li>
+								<li class="fragment">Fileserver</li>
+								<li class="fragment">Webserver</li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<pre><code data-trim data-noescape>
+						set $dir=/tmp
+						set $nfiles=50000
+						set $meandirwidth=100
+						set $meanfilesize=1m
+						set $iosize=10m
+						set $nthreads=16
+
+						...
+						</code></pre>
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim >
+						...
+						set mode quit firstdone
+
+						define fileset name=bigfileset,path=$dir,size=$meanfile ...
+						define process name=filecreate,instances=1
+						{
+						  thread name=filecreatethread,memsize=10m,instances=$n...
+						  {
+							flowop createfile name=createfile1, ...
+							flowop writewholefile name=writefile1, ...
+							flowop closefile name=closefile1,fd=1
+						  }
+						}
+
+						</code></pre>
+					</section>
+				</section>
+
+
 				<section>
 					<canvas data-chart="line">
 						My first dataset, 65, 59, 80, 81, 56, 55, 40
