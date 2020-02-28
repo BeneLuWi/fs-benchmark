@@ -26,5 +26,9 @@ Nach dem Test: ``sudo sysctl -a --pattern kernel.randomize_va_space=2``, um ASLR
 ## Relevante Paper
 - [Benchmark](https://www.researchgate.net/publication/304743738_Benchmarking_Performance_of_EXT4_XFS_and_BTRFS_as_Guest_File_Systems_Under_Linux_Environment)
 - [btrfs](https://www.usenix.org/system/files/login/articles/bacik_0.pdf)
+- [btrfs](https://dl.acm.org/doi/10.1145/2501620.2501623)
 - [ext4](https://www.usenix.org/system/files/login/articles/586-mathur.pdf)
 - [Filebench](https://www.usenix.org/system/files/login/articles/login_spring16_02_tarasov.pdf)
+
+
+
